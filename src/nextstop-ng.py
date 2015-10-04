@@ -1,3 +1,5 @@
+#! /usr/bin/python3
+
 import json
 import dateutil.parser
 import getopt
@@ -96,16 +98,12 @@ def fillDB(db_fname):
 
 def printUsage(name):
   print("Usage:\t%s -t transport_type -i database.db [-u] -l line [-s station [-d direction]] " % name)
-#  print("\t%s -a -t transport_type -c cause" % name)
   print("\t-h: Display this help")
   print("\t-i database: static information database")
   print("\t-u: update the specified databased with static information")
   print("\t-l line: line number or name. e.g.: 72, A, T3")
   print("\t-s station: optionnal: station for which to print the next stops")
   print("\t-d destination: optionnal: destination for which to print the next stops")
-#  print("\t-c cause: cause of the disturbance (alerte, travaux, or manif)")
-#  print("\t-a: get alerts and transportation status (work on the line, manifestations)")
-
 
 def main():
     type_transp = ''
@@ -118,7 +116,7 @@ def main():
     dbupdate = False
 
     try:
-        opt, args = getopt.getopt(sys.argv[1:], "ahl:s:d:c:i:u", ["help"])
+        opt, args = getopt.getopt(sys.argv[1:], "hl:s:d:i:u", ["help"])
     except getopt.GetoptError:
         printUsage(sys.argv[0])
         return 1
